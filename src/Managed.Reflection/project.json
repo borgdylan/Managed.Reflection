@@ -1,18 +1,21 @@
-﻿{
+{
     "name": "Managed.Reflection",
     "version": "0.2.0",
     "description": "Managed implementation of System.Reflection[.Emit]",
     "buildOptions": {
-        "debugType": "portable",
-        "keyFile": "../../../Managed.Reflection.snk"
+        "debugType": "portable"
     },
     "dependencies": {
-        "NETStandard.Library": "1.6.0",
-        "System.Security.Cryptography.Algorithms": "4.2.0",
-        "System.Security.Cryptography.Csp": "4.0.0"
     },
     "frameworks": {
-        "netstandard1.3": { }
+        "netstandard1.3": {
+            "dependencies": {
+                "NETStandard.Library": "1.6.0",
+                "System.Security.Cryptography.Algorithms": "4.2.0",
+                "System.Security.Cryptography.Csp": "4.0.0"
+            }
+        },
+        "net46": {}
     },
     "packOptions": {
         "summary": "Managed implementation of System.Reflection[.Emit]",
