@@ -1,17 +1,17 @@
 /*
-  The MIT License (MIT) 
+  The MIT License (MIT)
   Copyright (C) 2009-2010 Jeroen Frijters
-  
+
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-  
+
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -243,7 +243,7 @@ namespace Managed.Reflection
             get { return lazyMethodSignature ?? (lazyMethodSignature = method.MethodSignature.Bind(declaringType, methodArgs)); }
         }
 
-        internal override MethodBase BindTypeParameters(Type type)
+        public override MethodBase BindTypeParameters(Type type)
         {
             System.Diagnostics.Debug.Assert(methodArgs == null);
             return new GenericMethodInstance(declaringType.BindTypeParameters(type), method, null);
@@ -357,7 +357,7 @@ namespace Managed.Reflection
             return module.ImportMethodOrField(declaringType, field.Name, field.FieldSignature);
         }
 
-        internal override FieldInfo BindTypeParameters(Type type)
+        public override FieldInfo BindTypeParameters(Type type)
         {
             return new GenericFieldInstance(declaringType.BindTypeParameters(type), field);
         }
@@ -546,7 +546,7 @@ namespace Managed.Reflection
             get { return property.MetadataToken; }
         }
 
-        internal override PropertyInfo BindTypeParameters(Type type)
+        public override PropertyInfo BindTypeParameters(Type type)
         {
             return new GenericPropertyInfo(typeInstance.BindTypeParameters(type), property);
         }
@@ -658,7 +658,7 @@ namespace Managed.Reflection
             get { return eventInfo.MetadataToken; }
         }
 
-        internal override EventInfo BindTypeParameters(Type type)
+        public override EventInfo BindTypeParameters(Type type)
         {
             return new GenericEventInfo(typeInstance.BindTypeParameters(type), eventInfo);
         }

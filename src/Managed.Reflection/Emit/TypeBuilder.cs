@@ -1,17 +1,17 @@
 /*
-  The MIT License (MIT) 
+  The MIT License (MIT)
   Copyright (C) 2008-2011 Jeroen Frijters
-  
+
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-  
+
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,6 +38,7 @@ namespace Managed.Reflection.Emit
         private readonly int position;
         private int typeToken;
         private Type baseType;
+        private Type[] interfTypes;
         private GenericParameterAttributes attr;
 
         internal GenericTypeParameterBuilder(string name, TypeBuilder type, int position)
@@ -63,6 +64,7 @@ namespace Managed.Reflection.Emit
             rec.Owner = type != null ? type.MetadataToken : method.MetadataToken;
             rec.Name = this.ModuleBuilder.Strings.Add(name);
             this.paramPseudoIndex = this.ModuleBuilder.GenericParam.AddRecord(rec);
+            this.interfTypes = Type.EmptyTypes;
         }
 
         public override string AssemblyQualifiedName
@@ -82,7 +84,8 @@ namespace Managed.Reflection.Emit
 
         public override Type[] __GetDeclaredInterfaces()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return interfTypes;
         }
 
         public override TypeAttributes Attributes
@@ -149,7 +152,7 @@ namespace Managed.Reflection.Emit
         {
             get
             {
-                CheckBaked();
+                //CheckBaked();
                 return attr;
             }
         }
@@ -182,6 +185,7 @@ namespace Managed.Reflection.Emit
 
         public void SetInterfaceConstraints(params Type[] interfaceConstraints)
         {
+            interfTypes = interfaceConstraints;
             foreach (Type type in interfaceConstraints)
             {
                 AddConstraint(type);

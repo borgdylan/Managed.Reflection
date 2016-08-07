@@ -1,17 +1,17 @@
 /*
-  The MIT License (MIT) 
+  The MIT License (MIT)
   Copyright (C) 2008-2013 Jeroen Frijters
-  
+
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-  
+
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -290,7 +290,12 @@ namespace Managed.Reflection.Emit
             this.fileKind = fileKind;
         }
 
-        public void __Save(Stream stream, PortableExecutableKinds portableExecutableKind, ImageFileMachine imageFileMachine)
+        public void Save(Stream stream)
+		{
+			Save(stream, PortableExecutableKinds.ILOnly, ImageFileMachine.I386);
+		}
+
+        public void Save(Stream stream, PortableExecutableKinds portableExecutableKind, ImageFileMachine imageFileMachine)
         {
             if (!stream.CanRead || !stream.CanWrite || !stream.CanSeek || stream.Position != 0)
             {
@@ -369,7 +374,13 @@ namespace Managed.Reflection.Emit
                     // .NET doesn't support copying blob custom attributes into the version info
                     if (!cab.HasBlob || universe.DecodeVersionInfoAttributeBlobs)
                     {
-                        versionInfo.SetAttribute(this, cab);
+                        try
+                        {
+                            versionInfo.SetAttribute(this, cab);
+						}
+						catch
+                        {
+						}
                     }
                 }
                 ByteBuffer versionInfoData = new ByteBuffer(512);
@@ -395,7 +406,12 @@ namespace Managed.Reflection.Emit
             foreach (CustomAttributeBuilder cab in customAttributes)
             {
                 // we intentionally don't filter out the version info (pseudo) custom attributes (to be compatible with .NET)
-                manifestModule.SetCustomAttribute(0x20000001, cab);
+                try{
+                    manifestModule.SetCustomAttribute(0x20000001, cab);
+                }
+                catch
+                {
+                }
             }
 
             manifestModule.AddDeclarativeSecurity(0x20000001, declarativeSecurity);

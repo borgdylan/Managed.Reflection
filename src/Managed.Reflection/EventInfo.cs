@@ -1,17 +1,17 @@
 /*
-  The MIT License (MIT) 
+  The MIT License (MIT)
   Copyright (C) 2009-2012 Jeroen Frijters
-  
+
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-  
+
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -88,7 +88,7 @@ namespace Managed.Reflection
             get { return GetRemoveMethod(true); }
         }
 
-        internal virtual EventInfo BindTypeParameters(Type type)
+        public virtual EventInfo BindTypeParameters(Type type)
         {
             return new GenericEventInfo(this.DeclaringType.BindTypeParameters(type), this);
         }
@@ -185,7 +185,7 @@ namespace Managed.Reflection
             get { return eventInfo.IsStatic; }
         }
 
-        internal override EventInfo BindTypeParameters(Type type)
+        public override EventInfo BindTypeParameters(Type type)
         {
             return eventInfo.BindTypeParameters(type);
         }
