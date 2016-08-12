@@ -339,6 +339,8 @@ namespace Managed.Reflection
                 case "System.EnterpriseServices":
                 case "System.Globalization":
                 case "System.IO":
+                case "System.IO.FileSystem":
+                case "System.IO.FileSystem.Primitives":
                 case "System.Linq":
                 case "System.Linq.Expressions":
                 case "System.Linq.Parallel":
