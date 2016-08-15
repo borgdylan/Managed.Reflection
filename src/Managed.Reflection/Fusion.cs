@@ -303,13 +303,9 @@ namespace Managed.Reflection
                 case "System.Data.Services.Client":
                 case "System.IdentityModel":
                 case "System.IdentityModel.Selectors":
-                case "System.IO.Compression":
                 case "System.Numerics":
-                case "System.Reflection.Context":
                 case "System.Runtime.Remoting":
                 case "System.Runtime.Serialization":
-                case "System.Runtime.WindowsRuntime":
-                case "System.Runtime.WindowsRuntime.UI.Xaml":
                 case "System.ServiceModel":
                 case "System.Transactions":
                 case "System.Windows.Forms":
@@ -318,29 +314,66 @@ namespace Managed.Reflection
                 case "System.Xml.Serialization":
                     return name.PublicKeyToken == PublicKeyTokenEcma;
 
+                case "System.IO.Compression":
+                case "System.Reflection.Context":
+                case "System.Runtime.WindowsRuntime":
+                case "System.Runtime.WindowsRuntime.UI.Xaml":
+                    return name.PublicKeyToken == PublicKeyTokenEcma || name.PublicKeyToken == PublicKeyTokenMicrosoft;
+
                 case "Microsoft.CSharp":
                 case "Microsoft.VisualBasic":
+                case "Microsoft.Win32.Primitives":
+                case "Microsoft.Win32.Registry":
+                case "Microsoft.Win32.Registry.AccessControl":
+                case "System.AppContext":
+                case "System.Buffers":
                 case "System.Collections":
                 case "System.Collections.Concurrent":
+                case "System.Collections.Immutable":
+                case "System.Collections.NonGeneric":
+                case "System.Collections.Specialized":
                 case "System.ComponentModel":
                 case "System.ComponentModel.Annotations":
                 case "System.ComponentModel.EventBasedAsync":
+                case "System.ComponentModel.Primitives":
+                case "System.ComponentModel.TypeConverter":
                 case "System.Configuration":
                 case "System.Configuration.Install":
+                case "System.Console":
+                case "System.Data.Common":
+                case "System.Data.SqlClient":
                 case "System.Design":
                 case "System.Diagnostics.Contracts":
                 case "System.Diagnostics.Debug":
+                case "System.Diagnostics.DiagnosticSource":
+                case "System.Diagnostics.FileVersionInfo":
+                case "System.Diagnostics.Process":
+                case "System.Diagnostics.StackTrace":
+                case "System.Diagnostics.TextWriterTraceListener":
                 case "System.Diagnostics.Tools":
+                case "System.Diagnostics.TraceSource":
                 case "System.Diagnostics.Tracing":
                 case "System.DirectoryServices":
                 case "System.Drawing":
                 case "System.Drawing.Design":
+                case "System.Drawing.Primitives":
                 case "System.Dynamic.Runtime":
                 case "System.EnterpriseServices":
                 case "System.Globalization":
+                case "System.Globalization.Calendars":
+                case "System.Globalization.Extensions":
                 case "System.IO":
+                case "System.IO.Compression.ZipFile":
                 case "System.IO.FileSystem":
+                case "System.IO.FileSystem.AccessControl":
+                case "System.IO.FileSystem.DriveInfo":
                 case "System.IO.FileSystem.Primitives":
+                case "System.IO.FileSystem.Watcher":
+                case "System.IO.IsolatedStorage":
+                case "System.IO.MemoryMappedFiles":
+                case "System.IO.Packaging":
+                case "System.IO.Pipes":
+                case "System.IO.UnmanagedMemoryStream":
                 case "System.Linq":
                 case "System.Linq.Expressions":
                 case "System.Linq.Parallel":
@@ -350,44 +383,95 @@ namespace Managed.Reflection
                 case "System.Net":
                 case "System.Net.Http":
                 case "System.Net.Http.Rtc":
+                case "System.Net.Http.WinHttpHandler":
+                case "System.Net.NameResolution":
                 case "System.Net.NetworkInformation":
+                case "System.Net.Ping":
                 case "System.Net.Primitives":
                 case "System.Net.Requests":
+                case "System.Net.Security":
+                case "System.Net.Sockets":
+                case "System.Net.WebHeaderCollection":
+                case "System.Net.WebSockets":
+                case "System.Net.WebSockets.Client":
+                case "System.Numerics.Vectors":
                 case "System.ObjectModel":
                 case "System.Reflection":
+                case "System.Reflection.DispatchProxy":
+                case "System.Reflection.Emit":
+                case "System.Reflection.Emit.ILGeneration":
+                case "System.Reflection.Emit.Lightweight":
                 case "System.Reflection.Extensions":
+                case "System.Reflection.Metadata":
                 case "System.Reflection.Primitives":
+                case "System.Reflection.TypeExtensions":
+                case "System.Resources.Reader":
                 case "System.Resources.ResourceManager":
+                case "System.Resources.Writer":
                 case "System.Runtime":
+                case "System.Runtime.CompilerServices.Unsafe":
+                case "System.Runtime.CompilerServices.VisualC":
                 case "System.Runtime.Extensions":
+                case "System.Runtime.Handles":
                 case "System.Runtime.InteropServices":
+                case "System.Runtime.InteropServices.PInvoke":
+                case "System.Runtime.InteropServices.RuntimeInformation":
                 case "System.Runtime.InteropServices.WindowsRuntime":
+                case "System.Runtime.Loader":
                 case "System.Runtime.Numerics":
                 case "System.Runtime.Serialization.Formatters.Soap":
                 case "System.Runtime.Serialization.Json":
                 case "System.Runtime.Serialization.Primitives":
                 case "System.Runtime.Serialization.Xml":
                 case "System.Security":
+                case "System.Security.AccessControl":
+                case "System.Security.Claims":
+                case "System.Security.Cryptography.Algorithms":
+                case "System.Security.Cryptography.Cng":
+                case "System.Security.Cryptography.Csp":
+                case "System.Security.Cryptography.Encoding":
+                case "System.Security.Cryptography.OpenSsl":
+                case "System.Security.Cryptography.Pkcs":
+                case "System.Security.Cryptography.Primitives":
+                case "System.Security.Cryptography.ProtectedData":
+                case "System.Security.Cryptography.X509Certificates":
                 case "System.Security.Principal":
+                case "System.Security.Principal.Windows":
+                case "System.Security.SecureString":
                 case "System.ServiceModel.Duplex":
                 case "System.ServiceModel.Http":
                 case "System.ServiceModel.NetTcp":
                 case "System.ServiceModel.Primitives":
                 case "System.ServiceModel.Security":
                 case "System.ServiceProcess":
+                case "System.ServiceProcess.ServiceController":
                 case "System.Text.Encoding":
+                case "System.Text.Encoding.CodePages":
                 case "System.Text.Encoding.Extensions":
+                case "System.Text.Encodings.Web":
                 case "System.Text.RegularExpressions":
                 case "System.Threading":
+                case "System.Threading.AccessControl":
+                case "System.Threading.Overlapped":
                 case "System.Threading.Tasks":
+                case "System.Threading.Tasks.Dataflow":
+                case "System.Threading.Tasks.Extensions":
                 case "System.Threading.Tasks.Parallel":
+                case "System.Threading.Thread":
+                case "System.Threading.ThreadPool":
+                case "System.Threading.Timer":
+                case "System.ValueTuple":
                 case "System.Web":
                 case "System.Web.Mobile":
                 case "System.Web.Services":
                 case "System.Windows":
                 case "System.Xml.ReaderWriter":
                 case "System.Xml.XDocument":
+                case "System.Xml.XmlDocument":
                 case "System.Xml.XmlSerializer":
+                case "System.Xml.XPath":
+                case "System.Xml.XPath.XDocument":
+                case "System.Xml.XPath.XmlDocument":
                     return name.PublicKeyToken == PublicKeyTokenMicrosoft;
 
                 case "System.ComponentModel.DataAnnotations":
