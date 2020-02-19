@@ -22,6 +22,6 @@
 */
 using System.Reflection;
 
-[assembly: AssemblyTitle("Managed.Reflection")]
+//[assembly: AssemblyTitle("Managed.Reflection")]
 [assembly: AssemblyDescription("Managed implementation of System.Reflection[.Emit]")]
 [assembly: AssemblyCopyright("Copyright (C) 2008-2016 Jeroen Frijters. Copyright (C) 2011 Marek Safar.")]

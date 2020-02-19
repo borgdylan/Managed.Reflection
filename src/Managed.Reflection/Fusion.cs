@@ -57,6 +57,7 @@ namespace Managed.Reflection
         const string PublicKeyTokenMicrosoft = "b03f5f7f11d50a3a";
         const string PublicKeyTokenSilverlight = "7cec85d7bea7798e";
         const string PublicKeyTokenWinFX = "31bf3856ad364e35";
+        const string PublicKeyTokenNetStandard = "cc7b13ffcd2ddd51";
 
         // internal for use by mcs
         internal static bool CompareAssemblyIdentityPure(string assemblyIdentity1, bool unified1, string assemblyIdentity2, bool unified2, out AssemblyComparisonResult result)
@@ -482,6 +483,9 @@ namespace Managed.Reflection
                 case "System.Web.DynamicData":
                 case "System.Web.Routing":
                     return name.PublicKeyToken == PublicKeyTokenWinFX;
+                
+                case "netstandard":
+                    return name.PublicKeyToken == PublicKeyTokenNetStandard;
             }
 
             return false;
