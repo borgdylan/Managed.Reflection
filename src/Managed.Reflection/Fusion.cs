@@ -294,7 +294,9 @@ namespace Managed.Reflection
             // a new framework is released the new assemblies need to be added.
             switch (name.Name)
             {
+                case "mscorlib":
                 case "System":
+                case "System.ComponentModel.Composition":
                 case "System.Core":
                 case "System.Data":
                 case "System.Data.DataSetExtensions":
@@ -304,6 +306,10 @@ namespace Managed.Reflection
                 case "System.Data.Services.Client":
                 case "System.IdentityModel":
                 case "System.IdentityModel.Selectors":
+                case "System.IO.Compression":
+                case "System.IO.Compression.Brotli":
+                case "System.IO.Compression.FileSystem":
+                case "System.IO.Compression.ZipFile":
                 case "System.Numerics":
                 case "System.Runtime.Remoting":
                 case "System.Runtime.Serialization":
@@ -315,7 +321,6 @@ namespace Managed.Reflection
                 case "System.Xml.Serialization":
                     return name.PublicKeyToken == PublicKeyTokenEcma;
 
-                case "System.IO.Compression":
                 case "System.Reflection.Context":
                 case "System.Runtime.WindowsRuntime":
                 case "System.Runtime.WindowsRuntime.UI.Xaml":
@@ -323,11 +328,11 @@ namespace Managed.Reflection
 
                 case "Microsoft.CSharp":
                 case "Microsoft.VisualBasic":
+                case "Microsoft.VisualBasic.Core":
                 case "Microsoft.Win32.Primitives":
                 case "Microsoft.Win32.Registry":
                 case "Microsoft.Win32.Registry.AccessControl":
                 case "System.AppContext":
-                case "System.Buffers":
                 case "System.Collections":
                 case "System.Collections.Concurrent":
                 case "System.Collections.Immutable":
@@ -344,9 +349,8 @@ namespace Managed.Reflection
                 case "System.Data.Common":
                 case "System.Data.SqlClient":
                 case "System.Design":
-                case "System.Diagnostics.Contracts":
                 case "System.Diagnostics.Debug":
-                case "System.Diagnostics.DiagnosticSource":
+                case "System.Diagnostics.Contracts":
                 case "System.Diagnostics.FileVersionInfo":
                 case "System.Diagnostics.Process":
                 case "System.Diagnostics.StackTrace":
@@ -364,7 +368,6 @@ namespace Managed.Reflection
                 case "System.Globalization.Calendars":
                 case "System.Globalization.Extensions":
                 case "System.IO":
-                case "System.IO.Compression.ZipFile":
                 case "System.IO.FileSystem":
                 case "System.IO.FileSystem.AccessControl":
                 case "System.IO.FileSystem.DriveInfo":
@@ -449,19 +452,16 @@ namespace Managed.Reflection
                 case "System.Text.Encoding":
                 case "System.Text.Encoding.CodePages":
                 case "System.Text.Encoding.Extensions":
-                case "System.Text.Encodings.Web":
                 case "System.Text.RegularExpressions":
                 case "System.Threading":
                 case "System.Threading.AccessControl":
                 case "System.Threading.Overlapped":
                 case "System.Threading.Tasks":
                 case "System.Threading.Tasks.Dataflow":
-                case "System.Threading.Tasks.Extensions":
                 case "System.Threading.Tasks.Parallel":
                 case "System.Threading.Thread":
                 case "System.Threading.ThreadPool":
                 case "System.Threading.Timer":
-                case "System.ValueTuple":
                 case "System.Web":
                 case "System.Web.Mobile":
                 case "System.Web.Services":
@@ -482,9 +482,29 @@ namespace Managed.Reflection
                 case "System.Web.Extensions.Design":
                 case "System.Web.DynamicData":
                 case "System.Web.Routing":
+                case "WindowsBase":
                     return name.PublicKeyToken == PublicKeyTokenWinFX;
-                
+
                 case "netstandard":
+                case "System.Buffers":
+                case "System.Diagnostics.DiagnosticSource":
+                case "System.Formats.Asn1":
+                case "System.Memory":
+                case "System.Net.HttpListener":
+                case "System.Net.Http.Json":
+                case "System.Net.Mail":
+                case "System.Net.ServicePoint":
+                case "System.Net.WebClient":
+                case "System.Net.WebProxy":
+                case "System.Runtime.Intrinsics":
+                case "System.Runtime.Serialization.Formatters":
+                case "System.Text.Encodings.Web":
+                case "System.Text.Json":
+                case "System.Threading.Channels":
+                case "System.Threading.Tasks.Extensions":
+                case "System.Transactions.Local":
+                case "System.ValueTuple":
+                case "System.Web.HttpUtility":
                     return name.PublicKeyToken == PublicKeyTokenNetStandard;
             }
 
